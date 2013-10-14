@@ -1,5 +1,7 @@
 MapProxy==1.6.0
 PIL==1.1.7
 PyYAML==3.10
-mercurial==2.7
+eventlet==0.14.0
+greenlet==0.4.1
+gunicorn==18.0
 wsgiref==0.1.2
