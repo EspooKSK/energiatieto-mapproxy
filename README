@@ -1,0 +1,7 @@
+Heroku Mapproxy
+===============
+
+1. Configure
+2. Deploy with the geo-python buildpack: https://github.com/caffeinehit/heroku-buildpack-geo-python
+3. ???
+4. PROFIT!
