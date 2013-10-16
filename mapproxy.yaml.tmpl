@@ -37,28 +37,38 @@ services:
       abstract: This is a minimal MapProxy example.
 
 layers:
-  - name: espoo
-    title: Omniscale OSM WMS - osm.omniscale.net
-    sources: [espoo_cache]
+  - name: espoo_opas
+    title: Espoo Opaskarta
+    sources: ['espoo_opas_cache']
+  - name: espoo_orto
+    title: Espoo Ortokarta
+    sources: ['espoo_orto_cache']
 
 caches:
-  espoo_cache:
+  espoo_opas_cache:
     grids: [webmercator]
-    sources: [espoo_wms]
+    sources: ['espoo_wms:Opaskartta']
+  espoo_orto_cache:
+    grids: [webmercator]
+    sources: ['espoo_wms:Ortokartta_HSY-alue']
 
 sources:
   espoo_wms:
     type: wms
     req:
-      # use of this source is only permitted for testing
-      url: http://kartat.espoo.fi/teklaogcweb/wms.ashx
-      layers: Opaskartta
+      url: $wms_url
+      layers: Opaskartta,Ortokartta_HSY-alue
     supported_srs: ['EPSG:4326']
     coverage:
       bbox: [24.48, 60.05, 24.87, 60.38]
       srs: 'EPSG:4326'
 
 grids:
+    geodetic:
+        base: GLOBAL_GEODETIC
+        tile_size: [256, 256]
+        bbox: [-180, -90, 180, 90]
+        bbox_srs: 'EPSG:4326'
     webmercator:
         base: GLOBAL_WEBMERCATOR
 
